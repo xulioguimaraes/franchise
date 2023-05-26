@@ -6,6 +6,7 @@ export const customTheme = extendTheme({
       body: {
         backgroundColor: "#eae7e6",
         padding: 0,
+        overflowX: "hidden",
       },
     },
   },

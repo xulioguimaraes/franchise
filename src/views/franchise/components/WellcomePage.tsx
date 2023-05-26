@@ -11,7 +11,7 @@ import { ROSEPRIMARY } from "@/styles/customThemes";
 import { PinkBackgroud } from "@/styles/PinkBackgroud";
 export const WellcomePage = () => {
   return (
-    <Container as={Flex} maxW={"7xl"} h={"100vh"}>
+    <Flex as={Flex} h={"100vh"}>
 
       <Flex
         flex={1}
@@ -81,6 +81,6 @@ export const WellcomePage = () => {
           bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
         />
       </Flex>
-    </Container>
+    </Flex>
   );
 };
