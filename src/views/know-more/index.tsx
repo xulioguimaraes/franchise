@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { Feature } from "./components/Feature";
 import { FcAssistant, FcDonate, FcInTransit } from "react-icons/fc";
-import { Footer } from "./components/Footer";
+import { Footer } from "../../components/Footer";
 import { WithSpeechBubbles } from "./components/WithSpeechBubbles";
 import { ROSEPRIMARY } from "../../styles/customThemes";
 
