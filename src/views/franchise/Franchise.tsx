@@ -8,6 +8,7 @@ import { FormRegisterFranchise } from "./components/FormRegisterFranchise";
 import { Footer } from "@/components/Footer";
 import { Carousel } from "./components/Carousels";
 import Contact from "./components/Contact";
+import { Element } from "react-scroll";
 interface FranchiseProps {
   slug: string;
 }
@@ -21,11 +22,13 @@ export const Franchise = ({ slug }: FranchiseProps) => {
 
         <Flex my={12} as={Flex}>
           <GridListWith />
-
-          <FormRegisterFranchise />
+          <Element name="formulario">
+            <FormRegisterFranchise slug={slug} />
+          </Element>
         </Flex>
-
-        <Carousel />
+        <Element name="more">
+          <Carousel />
+        </Element>
 
         <Contact />
       </Container>
