@@ -1,19 +1,5 @@
+import { Box, Flex, Heading, Icon, Stack, Text } from "@chakra-ui/react";
 import {
-  AspectRatio,
-  Box,
-  Button,
-  Container,
-  Flex,
-  Heading,
-  Icon,
-  IconButton,
-  Stack,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import { ReactElement } from "react";
-import {
-  FcAbout,
   FcAssistant,
   FcCollaboration,
   FcDonate,
@@ -49,7 +35,7 @@ export default function GridListWith() {
             px={1}
             py={2}
             bgColor={ROSEPRIMARY}
-            w={"fit-content"}
+            maxWidth={"570px"}
             color={"white"}
             pos={"absolute"}
             bottom={"-60px"}
