@@ -177,6 +177,7 @@ export default function ToStart() {
   useEffect(() => {
     getProfileOptions();
     getState();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const toast = useToast();
   const onSubmit = async ({

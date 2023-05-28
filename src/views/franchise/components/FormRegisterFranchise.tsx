@@ -169,6 +169,7 @@ export const FormRegisterFranchise = ({ slug }: FormRegisterFranchiseProps) => {
   };
   useEffect(() => {
     getState();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const onSubmit = (data: RegisterFormData) => {
     const dataSend = {
