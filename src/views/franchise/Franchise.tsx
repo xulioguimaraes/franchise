@@ -7,6 +7,7 @@ import GridListWith from "./components/GridListWith";
 import { FormRegisterFranchise } from "./components/FormRegisterFranchise";
 import { Footer } from "@/components/Footer";
 import { Carousel } from "./components/Carousels";
+import Contact from "./components/Contact";
 interface FranchiseProps {
   slug: string;
 }
@@ -25,6 +26,8 @@ export const Franchise = ({ slug }: FranchiseProps) => {
         </Flex>
 
         <Carousel />
+
+        <Contact />
       </Container>
       <Footer />
     </>

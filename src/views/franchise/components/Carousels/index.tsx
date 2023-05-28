@@ -39,6 +39,7 @@ export const Carousel = () => {
       height={"fit-content"}
       width={"full"}
       overflow={"hidden"}
+      mb={4}
     >
       {/* CSS files for react-slick */}
       <link
