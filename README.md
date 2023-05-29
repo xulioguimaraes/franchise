@@ -1,38 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+<img src="public/assets/logo.png" alt="logo" width="200">
+</p>
 
-## Getting Started
+# Landing Page - A Principal Bebê e Mamãe
 
-First, run the development server:
+Este projeto é uma landing page com um fluxo que direciona os usuários para diferentes páginas, incluindo o cadastro de influenciadores, informações adicionais e o formulário de interesse em se tornar um franqueado.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Tecnologias Utilizadas
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Next.js
+- Chakra UI
+- React Hook Form
+- Zod
+- TypeScript
+- React Icons
+- React Scroll
+- Axios
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Fluxo de Páginas
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Página Inicial
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+A página inicial é a primeira página que os usuários acessam. Ela apresenta uma breve descrição do projeto e oferece duas opções para os usuários: "Cadastre-se como Influenciador" e "Saiba Mais".
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Ao clicar em "Cadastre-se como Influenciador", os usuários serão redirecionados para a página de "Cadastro de Influenciadores".
+- Ao clicar em "Saiba Mais", os usuários serão redirecionados para a página de "Informações Adicionais".
 
-## Learn More
+### Página de Informações Adicionais
 
-To learn more about Next.js, take a look at the following resources:
+A página de "Informações Adicionais" fornece mais detalhes sobre o projeto, seus benefícios e oportunidades. Nesta página, os usuários têm a opção de retornar à página de "Cadastro de Influenciadores" caso queiram prosseguir com o cadastro.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Ao clicar no botão "Cadastre-se como Influenciador", os usuários serão redirecionados novamente para a página de "Cadastro de Influenciadores".
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Página de Cadastro de Influenciadores
 
-## Deploy on Vercel
+A página de "Cadastro de Influenciadores" contém um formulário que os usuários devem preencher com suas informações pessoais. Após preencher o formulário, os usuários podem enviar os dados e serão redirecionados para a página de "Confirmação de Cadastro".
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Após enviar o formulário, os usuários serão redirecionados para a página de "Confirmação de Cadastro".
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Página de Confirmação de Cadastro
+
+A página de "Confirmação de Cadastro" exibe uma mensagem confirmando o sucesso do cadastro. Nesta página, os usuários também encontrarão um link para acessar a página do "Influenciador da Franquia".
+
+- Ao clicar no link "Influenciador da Franquia", os usuários serão redirecionados para a página do "Influenciador da Franquia".
+
+### Página do Influenciador da Franquia
+
+A página do "Influenciador da Franquia" é dedicada aos interessados em se tornar um franqueado. Nesta página, os usuários encontrarão um formulário para preencher com seus dados de interesse em se tornar um franqueado.
+
+## Executando o Projeto
+
+Siga as etapas abaixo para executar o projeto em sua máquina local:
+
+1. Certifique-se de ter o Node.js instalado em sua máquina.
+2. Clone este repositório para o seu ambiente de desenvolvimento.
+3. Navegue até o diretório do projeto.
+4. Execute o comando `npm install` para instalar as dependências do projeto.
+5. Execute o comando `npm run dev` para iniciar o servidor de desenvolvimento.
+6. Acesse o projeto em seu navegador usando o URL fornecido após a inicialização do servidor de desenvolvimento.
+
+Certifique-se de configurar corretamente as variáveis de ambiente necessárias para o projeto, como as informações de conexão com o banco de dados e
+
+outras configurações específicas do projeto.
+
+## Conclusão
+
+Este projeto de landing page oferece um fluxo simples e intuitivo para os usuários, permitindo que eles se cadastrem como influenciadores, obtenham informações adicionais e expressem interesse em se tornar franqueados. As tecnologias utilizadas, incluindo Next.js, Chakra UI e React Hook Form, garantem uma experiência de desenvolvimento moderna e eficiente.
