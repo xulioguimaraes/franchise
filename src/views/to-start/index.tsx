@@ -149,7 +149,6 @@ export default function ToStart() {
   };
 
   const handleSelectState = (id: string) => {
-    // setValue("state", +id);
     getCitys(id);
   };
 
