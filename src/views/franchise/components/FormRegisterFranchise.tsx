@@ -1,3 +1,4 @@
+import { api } from "@/services/axios";
 import { ROSEPRIMARY } from "@/styles/customThemes";
 import {
   Box,
@@ -14,11 +15,13 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
+import axios, { isAxiosError } from "axios";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import ReactInputMask from "react-input-mask";
 import { z } from "zod";
+import Success from "./Success";
+import { Element, Link, scroller } from "react-scroll";
 interface ResposneGetStates {
   id: number;
   nome: string;
@@ -97,10 +100,11 @@ export const FormRegisterFranchise = ({ slug }: FormRegisterFranchiseProps) => {
     register,
     getValues,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerFormSchema),
   });
+  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
   const [isLoadingOptions, setIsLoadingOptions] = useState({
     state: false,
     city: false,
@@ -136,6 +140,7 @@ export const FormRegisterFranchise = ({ slug }: FormRegisterFranchiseProps) => {
       setIsLoadingOptions((old) => ({ ...old, state: false }));
     }
   };
+
   const getCitys = async (id: string) => {
     try {
       setIsLoadingOptions((old) => ({ ...old, city: true }));
@@ -164,24 +169,57 @@ export const FormRegisterFranchise = ({ slug }: FormRegisterFranchiseProps) => {
     }
   };
   const handleSelectState = (id: string) => {
-    // setValue("state", +id);
     getCitys(id);
   };
   useEffect(() => {
     getState();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const onSubmit = (data: RegisterFormData) => {
-    const dataSend = {
-      ...data,
-      influencer_id: slug,
-      uf: optionsStates.find((item) => Number(data?.uf_id) === item.id)?.name,
-      city: optionsCity.find((item) => Number(data?.city_id) === item.id)?.name,
-    };
-    console.log(dataSend);
+  const scrollToElement = () => {
+    scroller.scrollTo("formulario", {
+      duration: 500,
+      smooth: true,
+      offset: -50, 
+    });
+  };
+  const onSubmit = async (data: RegisterFormData) => {
+    try {
+      const dataSend = {
+        ...data,
+
+        uf: optionsStates.find((item) => Number(data?.uf_id) === item.id)?.name,
+        city: optionsCity.find((item) => Number(data?.city_id) === item.id)
+          ?.name,
+        contact_period: optionsPeriod.find(
+          (item) => Number(data?.contact_period) === item.id
+        )?.name,
+      };
+      await api.post(
+        `/franchise/create-interested-franchise/${slug}`,
+        dataSend
+      );
+      setIsSubmitSuccessful(true);
+      scrollToElement();
+    } catch (error) {
+      let err;
+      if (isAxiosError(error)) {
+        err = error.response?.data.message;
+      } else {
+        err = "Erro ao cadastrar, tente novamente";
+      }
+      toast({
+        title: "Error",
+        description: `${err}`,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+      console.log(error);
+    }
   };
   return (
-    <chakra.div maxW={"7xl"} w={"md"} zIndex={2} mt={[16, 0]}>
+    <chakra.div  maxW={"7xl"} w={"md"} zIndex={2} mt={[16, 0]}>
       <Box
         borderWidth="1px"
         rounded="lg"
@@ -194,182 +232,200 @@ export const FormRegisterFranchise = ({ slug }: FormRegisterFranchiseProps) => {
         onSubmit={handleSubmit(onSubmit)}
         bg={"white"}
       >
-        <>
-          <Heading w="100%" textAlign={"center"} fontWeight="normal" mb="2%">
-            Seja um franqueado:
-          </Heading>
-          <Stack spacing={4}>
-            <FormControl>
-              <FormLabel htmlFor="first-name" fontWeight={"normal"}>
-                Nome completo
-              </FormLabel>
-              <Input
-                {...register("name")}
-                id="first-name"
-                placeholder="Nome completo"
-              />
-            </FormControl>
-
-            <FormControl>
-              <FormLabel htmlFor="phone" fontWeight={"normal"}>
-                Telefone
-              </FormLabel>
-              <Input
-                as={ReactInputMask}
-                mask={"(99) 99999-9999"}
-                {...register("phone")}
-                id="phone"
-                placeholder="Telefone"
-              />
-            </FormControl>
-            <FormControl>
-              <FormLabel htmlFor="email" fontWeight={"normal"}>
-                Email
-              </FormLabel>
-              <Input
-                {...register("email", { required: true })}
-                id="email"
-                type="email"
-              />
-              <FormHelperText>
-                Nunca compartilharemos seu e-mail.
-              </FormHelperText>
-            </FormControl>
-
-            <Flex gap={6}>
-              <FormControl
-                isInvalid={!!errors.uf_id}
-                isDisabled={isLoadingOptions.state}
-              >
-                <FormLabel htmlFor="uf_id" fontWeight={"normal"}>
-                  Estado
-                </FormLabel>
-                <Controller
-                  name="uf_id"
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field }) => (
-                    <Select
-                      {...field}
-                      onChange={(e) => {
-                        field.onChange(e);
-                        handleSelectState(e.target.value);
-                      }}
-                      placeholder="Selecione"
-                    >
-                      {optionsStates.map((item) => (
-                        <option key={item.id} value={item.id}>
-                          {item.name}
-                        </option>
-                      ))}
-                    </Select>
-                  )}
-                />
-              </FormControl>
-              <FormControl
-                isInvalid={!!errors.city_id}
-                isDisabled={isLoadingOptions.city || !selectedCityDisabled}
-              >
-                <FormLabel htmlFor="city_id" fontWeight={"normal"}>
-                  Cidade
-                </FormLabel>
-                <Controller
-                  name="city_id"
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field }) => (
-                    <Select placeholder="Selecione" {...field}>
-                      {optionsCity.map((item) => (
-                        <option key={item.id} value={item.id}>
-                          {item.name}
-                        </option>
-                      ))}
-                    </Select>
-                  )}
-                />
-              </FormControl>
-            </Flex>
-            <Box>
+        {isSubmitSuccessful ? (
+            <Success />
+        ) : (
+          <>
+            <>
               <Heading
                 w="100%"
-                textAlign={"initial"}
-                size={"sm"}
-                fontWeight="bold"
+                textAlign={"center"}
+                fontWeight="normal"
                 mb="2%"
               >
-                Melhor horário para contato:
+                Seja um franqueado:
               </Heading>
-              <FormControl isInvalid={!!errors.contact_period}>
-                <FormLabel htmlFor="contact_period" fontWeight={"normal"}>
-                  Selecione o período
-                </FormLabel>
-                <Controller
-                  name="contact_period"
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field }) => (
-                    <Select placeholder="Selecione" {...field}>
-                      {optionsPeriod.map((item) => (
-                        <option key={item.id} value={item.id}>
-                          {item.name}
-                        </option>
-                      ))}
-                    </Select>
-                  )}
-                />
-              </FormControl>
-            </Box>
-            <Flex gap={6}>
-              <FormControl isInvalid={!!errors.start_contact_time}>
-                <FormLabel htmlFor="start_contact_time" fontWeight={"normal"}>
-                  Ou de:
-                </FormLabel>
-                <Controller
-                  name="start_contact_time"
-                  control={control}
-                  render={({ field }) => (
-                    <Select placeholder="Selecione" {...field}>
-                      {optionsHours.map((item) => (
-                        <option key={item.id} value={item.id}>
-                          {item.name}
-                        </option>
-                      ))}
-                    </Select>
-                  )}
-                />
-              </FormControl>
-              <FormControl>
-                <FormLabel htmlFor="end_contact_time" fontWeight={"normal"}>
-                  Até:
-                </FormLabel>
-                <Controller
-                  name="end_contact_time"
-                  control={control}
-                  render={({ field }) => (
-                    <Select placeholder="Selecione" {...field}>
-                      {optionsHours.map((item) => (
-                        <option key={item.id} value={item.id}>
-                          {item.name}
-                        </option>
-                      ))}
-                    </Select>
-                  )}
-                />
-              </FormControl>
-            </Flex>
-          </Stack>
-        </>
+              <Stack spacing={4}>
+                <FormControl>
+                  <FormLabel htmlFor="first-name" fontWeight={"normal"}>
+                    Nome completo
+                  </FormLabel>
+                  <Input
+                    {...register("name")}
+                    id="first-name"
+                    placeholder="Nome completo"
+                  />
+                </FormControl>
 
-        <Button
-          bg={ROSEPRIMARY}
-          mt={8}
-          color={"white"}
-          w={"full"}
-          type="submit"
-          // isLoading={isSubmitting}
-        >
-          Cadastrar
-        </Button>
+                <FormControl>
+                  <FormLabel htmlFor="phone" fontWeight={"normal"}>
+                    Telefone
+                  </FormLabel>
+                  <Input
+                    as={ReactInputMask}
+                    mask={"(99) 99999-9999"}
+                    {...register("phone")}
+                    id="phone"
+                    placeholder="Telefone"
+                  />
+                </FormControl>
+                <FormControl>
+                  <FormLabel htmlFor="email" fontWeight={"normal"}>
+                    Email
+                  </FormLabel>
+                  <Input
+                    {...register("email", { required: true })}
+                    id="email"
+                    type="email"
+                  />
+                  <FormHelperText>
+                    Nunca compartilharemos seu e-mail.
+                  </FormHelperText>
+                </FormControl>
+
+                <Flex gap={6}>
+                  <FormControl
+                    isInvalid={!!errors.uf_id}
+                    isDisabled={isLoadingOptions.state}
+                  >
+                    <FormLabel htmlFor="uf_id" fontWeight={"normal"}>
+                      Estado
+                    </FormLabel>
+                    <Controller
+                      name="uf_id"
+                      control={control}
+                      rules={{ required: true }}
+                      render={({ field }) => (
+                        <Select
+                          {...field}
+                          onChange={(e) => {
+                            field.onChange(e);
+                            handleSelectState(e.target.value);
+                          }}
+                          placeholder="Selecione"
+                        >
+                          {optionsStates.map((item) => (
+                            <option key={item.id} value={item.id}>
+                              {item.name}
+                            </option>
+                          ))}
+                        </Select>
+                      )}
+                    />
+                  </FormControl>
+                  <FormControl
+                    isInvalid={!!errors.city_id}
+                    isDisabled={isLoadingOptions.city || !selectedCityDisabled}
+                  >
+                    <FormLabel htmlFor="city_id" fontWeight={"normal"}>
+                      Cidade
+                    </FormLabel>
+                    <Controller
+                      name="city_id"
+                      control={control}
+                      rules={{ required: true }}
+                      render={({ field }) => (
+                        <Select placeholder="Selecione" {...field}>
+                          {optionsCity.map((item) => (
+                            <option key={item.id} value={item.id}>
+                              {item.name}
+                            </option>
+                          ))}
+                        </Select>
+                      )}
+                    />
+                  </FormControl>
+                </Flex>
+                <Box>
+                  <Heading
+                    w="100%"
+                    textAlign={"initial"}
+                    size={"sm"}
+                    fontWeight="bold"
+                    mb="2%"
+                  >
+                    Melhor horário para contato:
+                  </Heading>
+                  <FormControl isInvalid={!!errors.contact_period}>
+                    <FormLabel htmlFor="contact_period" fontWeight={"normal"}>
+                      Selecione o período
+                    </FormLabel>
+                    <Controller
+                      name="contact_period"
+                      control={control}
+                      rules={{ required: true }}
+                      render={({ field }) => (
+                        <Select placeholder="Selecione" {...field}>
+                          {optionsPeriod.map((item) => (
+                            <option key={item.id} value={item.id}>
+                              {item.name}
+                            </option>
+                          ))}
+                        </Select>
+                      )}
+                    />
+                  </FormControl>
+                </Box>
+                <Flex gap={6}>
+                  <FormControl isInvalid={!!errors.start_contact_time}>
+                    <FormLabel
+                      htmlFor="start_contact_time"
+                      fontWeight={"normal"}
+                    >
+                      Ou de:
+                    </FormLabel>
+                    <Controller
+                      name="start_contact_time"
+                      control={control}
+                      render={({ field }) => (
+                        <Select placeholder="Selecione" {...field}>
+                          {optionsHours.map((item) => (
+                            <option key={item.id} value={item.id}>
+                              {item.name}
+                            </option>
+                          ))}
+                        </Select>
+                      )}
+                    />
+                  </FormControl>
+                  <FormControl>
+                    <FormLabel htmlFor="end_contact_time" fontWeight={"normal"}>
+                      Até:
+                    </FormLabel>
+                    <Controller
+                      name="end_contact_time"
+                      control={control}
+                      render={({ field }) => (
+                        <Select placeholder="Selecione" {...field}>
+                          {optionsHours.map((item) => (
+                            <option key={item.id} value={item.id}>
+                              {item.name}
+                            </option>
+                          ))}
+                        </Select>
+                      )}
+                    />
+                  </FormControl>
+                </Flex>
+              </Stack>
+            </>
+            <Button
+              bg={ROSEPRIMARY}
+              mt={8}
+              color={"white"}
+              w={"full"}
+              type="submit"
+              _hover={{
+                bg: "pink.500",
+              }}
+              isLoading={isSubmitting}
+            >
+              {/* <Link to="success" smooth={true} duration={500}> */}
+                Cadastrar
+              {/* </Link> */}
+            </Button>
+          </>
+        )}
       </Box>
     </chakra.div>
   );
