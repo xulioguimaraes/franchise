@@ -20,7 +20,7 @@ interface RegistrationPerformedPageProps {
 export const RegistrationPerformed = ({
   slug,
 }: RegistrationPerformedPageProps) => {
-  const link = `${process.env.SITE_URL}/franquia/${slug}`;
+  const link = `https://franchise-snowy.vercel.app/franquia/${slug}`;
   const toast = useToast();
   const handleCopy = async () => {
     try {
