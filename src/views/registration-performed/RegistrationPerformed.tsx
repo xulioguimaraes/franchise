@@ -20,8 +20,7 @@ interface RegistrationPerformedPageProps {
 export const RegistrationPerformed = ({
   slug,
 }: RegistrationPerformedPageProps) => {
-  const link = `http://localhost:5173/franquia/${slug}`;
-  // const link = `https://indicate-franchise.vercel.app/franquia/${slug}`;
+  const link = `${process.env.SITE_URL}/franquia/${slug}`;
   const toast = useToast();
   const handleCopy = async () => {
     try {
