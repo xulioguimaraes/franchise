@@ -170,7 +170,7 @@ export default function Home() {
 }
 export const getStaticPaths: GetStaticPaths = async () => {
   // Defina as rotas para as quais deseja gerar as páginas estáticas
-  const paths = ["/"];
+  const paths = ["/", "/saiba-mais"];
 
   return {
     paths,

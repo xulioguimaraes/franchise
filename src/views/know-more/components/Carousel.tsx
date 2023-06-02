@@ -7,15 +7,11 @@ import Slider from "react-slick";
 
 // Settings for the slider
 const settings = {
-  dots: true,
-  arrows: false,
-  fade: true,
   infinite: true,
   autoplay: true,
   speed: 500,
-  autoplaySpeed: 5000,
-  slidesToShow: 1,
-  slidesToScroll: 1,
+  autoplaySpeed: 3000,
+
 };
 
 export const Carousel = () => {
@@ -40,7 +36,6 @@ export const Carousel = () => {
   return (
     <Box
       position={"relative"}
-      height={"600px"}
       width={"full"}
       borderRadius={"lg"}
       overflow={"hidden"}
@@ -60,7 +55,7 @@ export const Carousel = () => {
       {/* Left Icon */}
       <IconButton
         aria-label="left-arrow"
-        colorScheme="messenger"
+        colorScheme="pink"
         borderRadius="full"
         position="absolute"
         left={side}
@@ -74,7 +69,7 @@ export const Carousel = () => {
       {/* Right Icon */}
       <IconButton
         aria-label="right-arrow"
-        colorScheme="messenger"
+        colorScheme="pink"
         borderRadius="full"
         position="absolute"
         right={side}

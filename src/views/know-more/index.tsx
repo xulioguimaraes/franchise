@@ -87,7 +87,7 @@ export default function KnowMore() {
                 </Text>
               </Stack>
 
-              <Flex maxW={"480px"}>
+              <Flex maxW={"320px"}>
                 <Carousel />
               </Flex>
             </Flex>
