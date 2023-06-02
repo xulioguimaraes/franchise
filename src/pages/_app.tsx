@@ -17,7 +17,6 @@ NProgress.configure({ showSpinner: false });
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={customTheme}>
-      <CSSReset />
       <NextSeo
         title="Indique e ganhe"
         description="Faça parte da nossa rede de indicação e ganhe recompensas por
@@ -46,6 +45,8 @@ export default function App({ Component, pageProps }: AppProps) {
           },
         ]}
       />
+      <CSSReset />
+
       <Component {...pageProps} />
     </ChakraProvider>
   );

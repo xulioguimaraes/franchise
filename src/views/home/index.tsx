@@ -20,6 +20,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
 import { NextSeo } from "next-seo";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 export default function Home() {
   const router = useRouter();
@@ -167,3 +168,18 @@ export default function Home() {
     </>
   );
 }
+export const getStaticPaths: GetStaticPaths = async () => {
+  // Defina as rotas para as quais deseja gerar as páginas estáticas
+  const paths = ["/"];
+
+  return {
+    paths,
+    fallback: "blocking", // Indica que outras rotas devem retornar um 404
+  };
+};
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+    revalidate: 604800, // 7 dias em segundos
+  };
+};
