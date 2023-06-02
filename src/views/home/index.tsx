@@ -19,12 +19,18 @@ import { PinkBackgroud } from "../../styles/PinkBackgroud";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
+import { NextSeo } from "next-seo";
 
 export default function Home() {
   const router = useRouter();
   const isMobile = useBreakpointValue({ base: true, md: false });
   return (
     <>
+      <NextSeo
+        title="INDIQUE E GANHE! | A Principal Bebê e Mamãe"
+        description="Faça parte da nossa rede de indicação e ganhe recompensas por
+        suas indicações."
+      />
       <Box as="main">
         <FlexContainer pos={"relative"}>
           <PinkBackgroud />
@@ -55,7 +61,7 @@ export default function Home() {
                       zIndex: -1,
                     }}
                   >
-                    INDIQUE E GANHE !
+                    INDIQUE E GANHE!
                   </Text>
                   <br />
                   <Text
