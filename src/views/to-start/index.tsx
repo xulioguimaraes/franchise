@@ -10,6 +10,7 @@ import {
   Select,
   Stack,
   chakra,
+  Flex,
 } from "@chakra-ui/react";
 import InputMask from "react-input-mask";
 
@@ -176,7 +177,7 @@ export default function ToStart() {
   useEffect(() => {
     getProfileOptions();
     getState();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const toast = useToast();
   const onSubmit = async ({
@@ -197,6 +198,8 @@ export default function ToStart() {
         city_id,
         profile_indicate,
         uf_id,
+        uf: optionsStates.find((item) => item.id === Number(uf_id))?.name,
+        city: optionsCity.find((item) => item.id === Number(city_id))?.name,
       });
       toast({
         title: "Cadastro realizado.",
@@ -308,57 +311,60 @@ export default function ToStart() {
                     placeholder="Data de nascimento"
                   />
                 </FormControl>
-                <FormControl
-                  isInvalid={!!errors.uf_id}
-                  isDisabled={isLoadingOptions.state}
-                >
-                  <FormLabel htmlFor="uf_id" fontWeight={"normal"}>
-                    Estado
-                  </FormLabel>
-                  <Controller
-                    name="uf_id"
-                    control={control}
-                    rules={{ required: true }}
-                    render={({ field }) => (
-                      <Select
-                        {...field}
-                        onChange={(e) => {
-                          field.onChange(e);
-                          handleSelectState(e.target.value);
-                        }}
-                        placeholder="Selecione"
-                      >
-                        {optionsStates.map((item) => (
-                          <option key={item.id} value={item.id}>
-                            {item.name}
-                          </option>
-                        ))}
-                      </Select>
-                    )}
-                  />
-                </FormControl>
-                <FormControl
-                  isInvalid={!!errors.city_id}
-                  isDisabled={isLoadingOptions.city}
-                >
-                  <FormLabel htmlFor="city_id" fontWeight={"normal"}>
-                    Cidade
-                  </FormLabel>
-                  <Controller
-                    name="city_id"
-                    control={control}
-                    rules={{ required: true }}
-                    render={({ field }) => (
-                      <Select placeholder="Selecione" {...field}>
-                        {optionsCity.map((item) => (
-                          <option key={item.id} value={item.id}>
-                            {item.name}
-                          </option>
-                        ))}
-                      </Select>
-                    )}
-                  />
-                </FormControl>
+                <Flex gap={6}>
+                  <FormControl
+                    isInvalid={!!errors.uf_id}
+                    isDisabled={isLoadingOptions.state}
+                  >
+                    <FormLabel htmlFor="uf_id" fontWeight={"normal"}>
+                      Estado
+                    </FormLabel>
+                    <Controller
+                      name="uf_id"
+                      control={control}
+                      rules={{ required: true }}
+                      render={({ field }) => (
+                        <Select
+                          {...field}
+                          onChange={(e) => {
+                            field.onChange(e);
+                            handleSelectState(e.target.value);
+                          }}
+                          placeholder="Selecione"
+                        >
+                          {optionsStates.map((item) => (
+                            <option key={item.id} value={item.id}>
+                              {item.name}
+                            </option>
+                          ))}
+                        </Select>
+                      )}
+                    />
+                  </FormControl>
+                  <FormControl
+                    isInvalid={!!errors.city_id}
+                    isDisabled={isLoadingOptions.city}
+                  >
+                    <FormLabel htmlFor="city_id" fontWeight={"normal"}>
+                      Cidade
+                    </FormLabel>
+                    <Controller
+                      name="city_id"
+                      control={control}
+                      rules={{ required: true }}
+                      render={({ field }) => (
+                        <Select placeholder="Selecione" {...field}>
+                          {optionsCity.map((item) => (
+                            <option key={item.id} value={item.id}>
+                              {item.name}
+                            </option>
+                          ))}
+                        </Select>
+                      )}
+                    />
+                  </FormControl>
+                </Flex>
+
                 <FormControl isInvalid={!!errors.profile_indicate}>
                   <FormLabel htmlFor="profile_indicate" fontWeight={"normal"}>
                     Perfil de indicador
