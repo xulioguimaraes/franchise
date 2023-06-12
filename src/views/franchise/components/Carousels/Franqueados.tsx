@@ -20,7 +20,7 @@ export const Franqueados = () => {
           <Image
             rounded={"md"}
             alt={"feature image"}
-            src={"/assets/funcionarios-franquia.webp"}
+            src={"/assets/loja22.jpeg"}
             objectFit={"cover"}
           />
         </Flex>
@@ -35,16 +35,14 @@ export const Franqueados = () => {
             alignSelf={"flex-start"}
             rounded={"md"}
           >
-            Franqueados
+            modelo 3
           </Text>
-          <Heading>Historia de sucesso</Heading>
+          <Heading> Titulo do modelo</Heading>
           <Text color={"gray.600"} fontSize={"lg"}>
-            {` Márcia e Cláudio adquiriram uma franquia da "A Principal Bebê e
-            Mamãe" em Araguaína, Tocantins. Sua loja se tornou um destino
-            querido para pais em busca de produtos infantis, Nosso franqueados
-            criaram um ambiente acolhedor e se tornaram uma referência na
-            cidade. Sua história é um exemplo inspirador de empreendedorismo e
-            dedicação .`}
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+            repellendus perspiciatis adipisci cumque ducimus, aliquam expedita
+            fugit dolore et! Nesciunt hic enim laboriosam modi velit aliquid
+            saepe et ducimus maiores!
           </Text>
         </Stack>
       </SimpleGrid>

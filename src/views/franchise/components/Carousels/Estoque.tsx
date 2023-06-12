@@ -30,20 +30,22 @@ export const Estoque = () => {
               rounded={"md"}
               w={"max-content"}
             >
-              Estoque
+              Modelo 2
             </Text>
-            <Heading zIndex={1}>Diversidade de produtos.</Heading>
+            <Heading zIndex={1}>Titulo do modelo 2</Heading>
           </Box>
           <Text zIndex={1} color={"gray.600"} fontSize={"lg"}>
-            {`A Principal Bebê e Mamãe tem uma estratégia de estoque excepcional, com inventário diversificado e atualizado. Eles antecipam as demandas dos clientes, monitoram o movimento dos produtos e garantem reposições estratégicas. Isso resulta em uma seleção de alta qualidade e conquista a confiança dos clientes.`}
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta
+            itaque nobis quae porro natus minima, fuga molestias nulla, dolorum
+            suscipit tempore modi quis unde eligendi quo, expedita sed odit
+            pariatur.
           </Text>
-          
         </Stack>
         <Flex>
           <Image
             rounded={"md"}
             alt={"feature image"}
-            src={"/assets/estoque.webp"}
+            src={"/assets/loja44.jpeg"}
             objectFit={"cover"}
             zIndex={1}
           />

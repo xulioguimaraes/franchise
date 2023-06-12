@@ -20,7 +20,7 @@ export const Satisfacao = () => {
           <Image
             rounded={"md"}
             alt={"feature image"}
-            src={"/assets/pessoas-loja.webp"}
+            src={"/assets/loja11.jpeg"}
             objectFit={"cover"}
           />
         </Flex>
@@ -35,11 +35,14 @@ export const Satisfacao = () => {
             alignSelf={"flex-start"}
             rounded={"md"}
           >
-            Clientes
+            Modelo 4
           </Text>
-          <Heading>Satisfação garantida</Heading>
+          <Heading>Titulo do modelo</Heading>
           <Text color={"gray.600"} fontSize={"lg"}>
-            {`A Principal Bebê e Mamãe é reconhecida por atrair uma grande quantidade de clientes. Sua reputação de qualidade, variedade de produtos e atendimento excepcional faz com que pais e mães confiem na loja para suprir suas necessidades. A dedicação em oferecer uma experiência positiva e satisfatória resultou em uma base sólida de clientes fiéis. A Principal Bebê e Mamãe continua a crescer e prosperar, graças ao apoio e preferência dos clientes satisfeitos.`}
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi,
+            accusamus magni beatae tenetur facilis consequuntur iste totam quos?
+            Voluptatem sunt porro commodi exercitationem suscipit iure
+            blanditiis animi nesciunt aut temporibus.
           </Text>
         </Stack>
       </SimpleGrid>

@@ -15,7 +15,7 @@ export default function GridListWith() {
       <Box>
         <Box maxW={"3xl"} pos={"relative"}>
           <Heading
-            fontSize={"6xl"}
+            fontSize={"2.5rem"}
             textTransform={"capitalize"}
             bgColor={"#00A2D0"}
             w={"fit-content"}
@@ -28,7 +28,7 @@ export default function GridListWith() {
             fontWeight={700}
             lineHeight={1.2}
           >
-            Benefícios da franquia
+          Por que se tornar um franqueado?
           </Heading>
           <Text
             ml={4}
@@ -38,7 +38,7 @@ export default function GridListWith() {
             maxWidth={"570px"}
             color={"white"}
             pos={"absolute"}
-            bottom={"-60px"}
+            bottom={"-50px"}
             fontSize={{ base: "sm", sm: "lg" }}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis

@@ -15,13 +15,6 @@ export const Ergino = () => {
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
         <Stack spacing={4}>
           <Flex zIndex={2} justify={"center"} align={"center"}>
-            <Img
-              w={["80px", "100px"]}
-              h={["70px", "90px"]}
-              zIndex={1}
-              alt=""
-              src={"/assets/logo.png"}
-            />
             <Box pl={4}>
               <Text
                 textTransform={"uppercase"}
@@ -35,19 +28,16 @@ export const Ergino = () => {
                 rounded={"md"}
                 w={"max-content"}
               >
-                Nossa historia
+                Modelo 1
               </Text>
-              <Heading zIndex={1}>A Principal Bebê e Mamãe</Heading>
+              <Heading zIndex={1}>Titulo do modelo</Heading>
             </Box>
           </Flex>
           <Text zIndex={1} color={"gray.600"} fontSize={"lg"}>
-            {`Ergino construiu "A Principal Bebê e Mamãe", uma loja de artigos
-            infantis com 14 anos de mercado. Com produtos de alta qualidade e
-            atendimento excepcional, a loja se tornou um destino preferido para
-            pais em busca de itens para bebês. Ergino criou um ambiente
-            acolhedor e familiar, mantendo-se atualizado com as demandas do
-            mercado. Sua história é um testemunho de sucesso baseado na paixão e
-            no compromisso em atender às necessidades das famílias.`}
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
+            architecto, adipisci consequuntur cumque maiores eius ratione saepe
+            velit explicabo corporis blanditiis sapiente eum. Earum facere
+            quidem exercitationem, laboriosam repudiandae accusantium?
           </Text>
         </Stack>
 
@@ -55,7 +45,7 @@ export const Ergino = () => {
           <Image
             rounded={"md"}
             alt={"feature image"}
-            src={"/assets/ergino.webp"}
+            src={"/assets/loja-franquia.webp"}
             objectFit={"cover"}
             zIndex={1}
           />

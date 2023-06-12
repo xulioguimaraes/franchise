@@ -193,6 +193,7 @@ export const FormRegisterFranchise = ({ slug }: FormRegisterFranchiseProps) => {
         contact_period: optionsPeriod.find(
           (item) => Number(data?.contact_period) === item.id
         )?.name,
+        page: "franchise"
       };
       await api.post(
         `/franchise/create-interested-franchise/${slug}`,
