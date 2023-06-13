@@ -8,14 +8,31 @@ Este projeto é uma landing page com um fluxo que direciona os usuários para di
 
 ## Tecnologias Utilizadas
 
-- Next.js
-- Chakra UI
-- React Hook Form
-- Zod
-- TypeScript
-- React Icons
-- React Scroll
-- Axios
+- [@chakra-ui/next-js](https://www.npmjs.com/package/@chakra-ui/next-js): ^2.1.3
+- [@chakra-ui/react](https://www.npmjs.com/package/@chakra-ui/react): ^2.6.1
+- [@emotion/react](https://www.npmjs.com/package/@emotion/react): ^11.11.0
+- [@emotion/styled](https://www.npmjs.com/package/@emotion/styled): ^11.11.0
+- [@hookform/resolvers](https://www.npmjs.com/package/@hookform/resolvers): ^3.1.0
+- [@next/font](https://www.npmjs.com/package/@next/font): 13.1.6
+- [@types/node](https://www.npmjs.com/package/@types/node): 20.2.4
+- [@types/react](https://www.npmjs.com/package/@types/react): 18.2.7
+- [@types/react-dom](https://www.npmjs.com/package/@types/react-dom): 18.2.4
+- [axios](https://www.npmjs.com/package/axios): ^1.4.0
+- [eslint](https://www.npmjs.com/package/eslint): 8.41.0
+- [eslint-config-next](https://www.npmjs.com/package/eslint-config-next): 13.1.6
+- [framer-motion](https://www.npmjs.com/package/framer-motion): ^10.12.16
+- [next](https://www.npmjs.com/package/next): 13.1.6
+- [next-seo](https://www.npmjs.com/package/next-seo): ^6.0.0
+- [nprogress](https://www.npmjs.com/package/nprogress): ^0.2.0
+- [react](https://www.npmjs.com/package/react): 18.2.0
+- [react-dom](https://www.npmjs.com/package/react-dom): 18.2.0
+- [react-hook-form](https://www.npmjs.com/package/react-hook-form): ^7.43.9
+- [react-icons](https://www.npmjs.com/package/react-icons): ^4.8.0
+- [react-input-mask](https://www.npmjs.com/package/react-input-mask): ^2.0.4
+- [react-scroll](https://www.npmjs.com/package/react-scroll): ^1.8.9
+- [react-slick](https://www.npmjs.com/package/react-slick): ^0.29.0
+- [typescript](https://www.npmjs.com/package/typescript): 5.0.4
+- [zod](https://www.npmjs.com/package/zod): ^3.21.4
 
 ## Fluxo de Páginas
 
