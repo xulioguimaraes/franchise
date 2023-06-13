@@ -69,16 +69,37 @@ A página do "Influenciador da Franquia" é dedicada aos interessados em se torn
 
 Siga as etapas abaixo para executar o projeto em sua máquina local:
 
-1. Certifique-se de ter o Node.js instalado em sua máquina.
-2. Clone este repositório para o seu ambiente de desenvolvimento.
-3. Navegue até o diretório do projeto.
-4. Execute o comando `npm install` para instalar as dependências do projeto.
-5. Execute o comando `npm run dev` para iniciar o servidor de desenvolvimento.
-6. Acesse o projeto em seu navegador usando o URL fornecido após a inicialização do servidor de desenvolvimento.
+1. Certifique-se de ter o Node.js instalado em sua máquina. Você pode baixar a versão mais recente do Node.js em https://nodejs.org.
 
-Certifique-se de configurar corretamente as variáveis de ambiente necessárias para o projeto, como as informações de conexão com o banco de dados e
+2. Clone este repositório para o seu ambiente de desenvolvimento. Abra o terminal e execute o seguinte comando:
 
-outras configurações específicas do projeto.
+```bash
+git clone https://github.com/seu-usuario/nome-do-projeto.git
+```
+
+Certifique-se de substituir `seu-usuario` e `nome-do-projeto` pelos detalhes corretos.
+
+3. Navegue até o diretório do projeto. No terminal, digite o seguinte comando:
+
+```bash
+cd nome-do-projeto
+```
+
+4. Execute o comando `npm install` para instalar as dependências do projeto. Isso baixará e instalará todas as dependências listadas no arquivo `package.json`. No terminal, digite o seguinte comando:
+
+```bash
+npm install
+```
+
+5. Execute o comando `npm run dev` para iniciar o servidor de desenvolvimento. Isso iniciará o servidor Next.js e permitirá que você visualize o projeto em seu navegador. No terminal, digite o seguinte comando:
+
+```bash
+npm run dev
+```
+
+6. Acesse o projeto em seu navegador usando o URL fornecido após a inicialização do servidor de desenvolvimento. Geralmente, o URL é `http://localhost:3000`.
+
+Certifique-se de substituir `seu-usuario` e `nome-do-projeto` pelos detalhes corretos.
 
 ## Conclusão
 
